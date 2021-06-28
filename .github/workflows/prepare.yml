@@ -9,20 +9,6 @@ defaults:
     shell: bash
 
 jobs:
-  lint:
-    name: ESLint
-    needs: label
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 1
-      - name: setup node
-        uses: actions/setup-node@v2
-      - name: install
-        run: yarn install --check-files --frozen-lockfile
-      - name: lint
-        run: yarn lint
   test:
     name: Tests
     needs: lint
