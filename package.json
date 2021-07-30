@@ -20,6 +20,7 @@
   "dependencies": {
     "@geist-ui/react": "^2.1.5",
     "@geist-ui/react-icons": "^1.0.1",
+    "@sentry/nextjs": "^6.10.0",
     "@supabase/supabase-js": "^1.13.2",
     "classnames": "^2.3.1",
     "date-fns": "^2.22.1",
@@ -51,7 +52,8 @@
   "eslintConfig": {
     "extends": "@consenlabs-fe/eslint-config-ts",
     "rules": {
-      "react/react-in-jsx-scope": 0
+      "react/react-in-jsx-scope": 0,
+      "@typescript-eslint/no-var-requires": 0
     }
   },
   "lint-staged": {

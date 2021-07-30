@@ -4,8 +4,8 @@ import { GetStaticProps } from 'next'
 import { FormEventHandler, useState } from 'react'
 import debounce from 'lodash/debounce'
 import { orderBy } from 'lodash'
-import { GithubCorner, ChainItem } from '../common/components'
-import { getNetworkRecords, getOriginChains } from '../common/services'
+import { ChainItem } from '../common/components'
+import { getOriginChains } from '../common/services'
 import { CUSTOM_NETWORKS } from '../common/custom-networks'
 import { mergeNetworkConfig } from '../common/utils'
 interface HomeProps {
@@ -44,12 +44,11 @@ export const Home: React.FC<HomeProps> = ({ chains }) => {
 
   return (
     <>
-      <GithubCorner />
       <div className="chainlist">
         <Page>
           <Page.Header>
             <h2>EVM Box</h2>
-            <p>Use Your favorite EVM Compatible Network</p>
+            <p>EVM Box is a list of EVM networks. Helping users connect to EVM powered networks.</p>
           </Page.Header>
           <Input
             width="100%"
@@ -75,22 +74,15 @@ export const Home: React.FC<HomeProps> = ({ chains }) => {
 
 export default Home
 
-export const getStaticProps: GetStaticProps<HomeProps> = async() => {
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   try {
-    const [originChains, counts] = await Promise.all([
-      getOriginChains(),
-      getNetworkRecords(),
-    ])
+    const originChains = await getOriginChains()
 
     const chains = mergeNetworkConfig(originChains, CUSTOM_NETWORKS)
 
-    chains.forEach((chain: Chain) => {
-      if (counts[chain.chainId]) chain.selectCounts = counts[chain.chainId]
-    })
-
     return {
       props: {
-        chains: orderBy(chains, ['selectCounts']),
+        chains: orderBy(chains, ['chainId']),
       },
     }
   } catch (error) {

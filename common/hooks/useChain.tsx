@@ -2,7 +2,6 @@ import { useToasts } from '@geist-ui/react'
 import { utils } from 'ethers'
 import { useEffect, useState } from 'react'
 import { EVM_BOX_PERSIST } from '../constants'
-import { updateNetworkRecord } from '../services'
 import { useDApp } from './useDApp'
 
 const { hexValue } = utils
@@ -18,7 +17,7 @@ export const useChain = (): [number | undefined, (chain: Chain) => void] => {
 
   const addEthChain = (chain: Chain) => {
     if (!enable) return
-    const params: AtLeastOneAddEthereumChainParameter = {
+    const params: AddEthereumChainParameter = {
       chainId: hexValue(chain.chainId),
       blockExplorerUrls: [chain.infoURL],
       chainName: chain.name,
@@ -28,11 +27,6 @@ export const useChain = (): [number | undefined, (chain: Chain) => void] => {
         decimals: chain.nativeCurrency.decimals,
       },
       rpcUrls: chain.rpc,
-    }
-    try {
-      updateNetworkRecord(chain.chainId)
-    } catch (error) {
-      //
     }
     window.ethereum
       .request({
