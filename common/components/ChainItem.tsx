@@ -33,24 +33,18 @@ export const ChainItem: React.FC<IChainItemProps> = ({ chain }) => {
         </Fieldset.Subtitle>
         <Fieldset.Footer>
           <Fieldset.Footer.Status>
-            <a
-              href={chain.infoURL}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-            Official Site
+            <a href={chain.infoURL} target="_self" rel="noopener noreferrer">
+              Official Site
             </a>
           </Fieldset.Footer.Status>
           <Fieldset.Footer.Actions>
-            {
-              currentChainId === chain.chainId
-                ? 'current network'
-                : enable && (
+            {currentChainId === chain.chainId
+              ? 'current network'
+              : enable && (
                   <Button type="secondary" ghost size="mini" onClick={() => addEthChain(chain)}>
-                  Add
+                    Add
                   </Button>
-                )
-            }
+                )}
           </Fieldset.Footer.Actions>
         </Fieldset.Footer>
       </Fieldset>

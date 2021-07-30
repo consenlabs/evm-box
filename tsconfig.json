@@ -18,8 +18,8 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "isolatedModules": true,
+    "isolatedModules": true
   },
   "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "types/chainlist.d.ts", "**/*.ts", "**/*.tsx"]
+  "include": ["next-env.d.ts", "global.d.ts", "chainlist.d.ts", "**/*.ts", "**/*.tsx"]
 }
