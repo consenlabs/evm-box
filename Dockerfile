@@ -1,4 +1,4 @@
-FROM node:16.4.0-alpine
+FROM node:14.17.4-alpine
 
 RUN apk add nginx git build-base --no-cache --update && \
     rm -rf /var/cache/apk/* && \
