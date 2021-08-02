@@ -16,3 +16,7 @@ Search EVM compatible or L2 networks by name, symbol or chainId, networks info m
 ## Known Issue
 
 [EIP-3085](https://eips.ethereum.org/EIPS/eip-3085) defined `add` method not support mainnet for security reason，so there is no programming methods to switch to mainnet. I'll continue to focus this [EIP-3326](https://ethereum-magicians.org/t/eip-3326-wallet-switchethereumchain/5471) draft, which will resolve this problem.
+
+## License
+
+[MIT License](./LICENSE)
