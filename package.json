@@ -8,9 +8,11 @@
   "prettier": "@consenlabs-fe/prettier",
   "scripts": {
     "dev": "next",
-    "build": "next build",
     "release": "standard-version --no-verify",
     "start": "next start",
+    "start:prod": "next start -p $PORT",
+    "build": "next build",
+    "build:analyze": "ANALYZE=true next build",
     "prepare": "husky install",
     "test": "tsc -p tsconfig.test.json"
   },
@@ -34,6 +36,7 @@
   "devDependencies": {
     "@consenlabs-fe/eslint-config-ts": "^0.1.3",
     "@consenlabs-fe/prettier": "^0.1.2",
+    "@next/bundle-analyzer": "^11.0.1",
     "@types/isomorphic-fetch": "^0.0.35",
     "@types/lodash": "^4.14.168",
     "@types/node": "12.0.12",
@@ -43,6 +46,7 @@
     "eslint-config-next": "^11.0.1",
     "husky": "^6.0.0",
     "lint-staged": ">=10",
+    "next-compose-plugins": "^2.2.1",
     "standard-version": "^9.3.0",
     "typescript": "^4.2.4"
   },
