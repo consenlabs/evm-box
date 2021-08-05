@@ -96,6 +96,7 @@ steps:
     branch:
     - feature/*
     - hotfix/*
+    - develop
     event:
     - push
 
