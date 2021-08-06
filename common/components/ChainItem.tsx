@@ -60,7 +60,13 @@ export const ChainItem: React.FC<IChainItemProps> = ({ chain }) => {
             display: flex !important;
           }
           :global(.chain-tag) {
+            flex: none;
             margin-left: auto;
+            width: 70px;
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
           }
         `}
       </style>

@@ -53,6 +53,7 @@ export const Home: React.FC<HomeProps> = ({ chains }) => {
             icon={<Search />}
             onChange={onSearch}
             clearable
+            style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
           />
           <Divider />
 
