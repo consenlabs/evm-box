@@ -3,7 +3,6 @@ import { Search } from '@geist-ui/react-icons'
 import { GetStaticProps } from 'next'
 import { FormEventHandler, useState } from 'react'
 import debounce from 'lodash/debounce'
-import { orderBy } from 'lodash'
 import { ChainItem } from '../common/components'
 import { getOriginChains } from '../common/services'
 import { CUSTOM_NETWORKS } from '../common/custom-networks'
@@ -17,20 +16,18 @@ export const Home: React.FC<HomeProps> = ({ chains }) => {
 
   const searchNetwork: FormEventHandler<HTMLInputElement> = e => {
     const searchContent = (e.target as HTMLInputElement).value.trim()
-    console.log(searchContent, 's')
     if (!searchContent) {
       setFilter(chains)
     } else {
-      const searchResult = filter.filter(chain => {
+      const searchResult = chains.filter(chain => {
         const { name, shortName, chain: chainText, network, networkId } = chain
         return [name, shortName, chainText, network, networkId.toString()]
           .map(item => item.toLowerCase())
-          .some(item => item.indexOf(searchContent.toLowerCase()) > -1)
+          .some(item => item.includes(searchContent.toLowerCase()))
       })
       setFilter(searchResult)
     }
   }
-
   const debouncedSearch = debounce(searchNetwork, 500)
 
   const onSearch: FormEventHandler<HTMLInputElement> = e => {
@@ -56,6 +53,7 @@ export const Home: React.FC<HomeProps> = ({ chains }) => {
             icon={<Search />}
             onChange={onSearch}
             clearable
+            style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
           />
           <Divider />
 
@@ -82,7 +80,7 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
 
     return {
       props: {
-        chains: orderBy(chains, ['chainId']),
+        chains,
       },
     }
   } catch (error) {

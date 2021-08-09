@@ -5,6 +5,11 @@
  */
 export const CUSTOM_NETWORKS: Array<AtLeastOne<Chain, 'chainId' | 'name'>> = [
   {
+    chainId: 97,
+    name: 'Binance Smart Chain Testnet',
+    network: 'testnet',
+  },
+  {
     chainId: 137,
     name: 'Matic Mainnet',
     rpc: ['https://matic-mainnet.chainstacklabs.com'],

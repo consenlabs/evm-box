@@ -16,7 +16,7 @@ local namespace = 'biz';
                   utils.adjust_deployment([
                     repo,
                   ], 'dev'),
-                  { branch: ['feature/*','hotfix/*'], event: ["push"]}),
+                  { branch: ['feature/*','hotfix/*', 'develop'], event: ["push"]}),
 
      //deploy to staging
      utils.deploy('deploy-staging',

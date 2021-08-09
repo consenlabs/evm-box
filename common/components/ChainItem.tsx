@@ -14,8 +14,7 @@ export const ChainItem: React.FC<IChainItemProps> = ({ chain }) => {
     <>
       <Fieldset className={classnames('chain', { current: currentChainId === chain.chainId })}>
         <Fieldset.Title className="chain-title">
-          {/* {chain.nativeCurrency?.symbol ?? ''} */}
-          {chain.chain}
+          {chain.name}
           <Tag type="lite" className="chain-tag">
             {chain.network}
           </Tag>
@@ -23,7 +22,7 @@ export const ChainItem: React.FC<IChainItemProps> = ({ chain }) => {
         <Fieldset.Subtitle>
           <Row>
             <Col>
-              <p>{chain.name}</p>
+              <p>{chain.chain}</p>
             </Col>
 
             <Col>
@@ -61,7 +60,13 @@ export const ChainItem: React.FC<IChainItemProps> = ({ chain }) => {
             display: flex !important;
           }
           :global(.chain-tag) {
+            flex: none;
             margin-left: auto;
+            width: 70px;
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
           }
         `}
       </style>

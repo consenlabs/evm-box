@@ -1,12 +1,15 @@
-import fetch from 'isomorphic-fetch'
+import Gateway from '@consenlabs-fe/gateway'
+import axios from 'axios'
 
-const fetchAPI = async (input: RequestInfo) => {
-  try {
-    const resp = await fetch(input)
-    return resp.json()
-  } catch (error) {
-    console.error(error)
-  }
+const wrappedAxios = Gateway.withAxiosGateway(axios)
+
+const get = async (url: string) => {
+  return wrappedAxios({
+    method: 'get',
+    url: url,
+  })
+    .then(res => res.data)
+    .catch(error => console.error(error))
 }
 
-export const getOriginChains = async () => await fetchAPI('https://chainid.network/chains.json')
+export const getOriginChains = async () => await get('https://chainid.network/chains.json')
