@@ -9,11 +9,7 @@ const get = async (url: string) => {
     url: url,
   })
     .then(res => res.data)
-      return res.data
-    })
-    .catch(error => {
-      console.error(error)
-    })
+    .catch(error => console.error(error))
 }
 
 export const getOriginChains = async () => await get('https://chainid.network/chains.json')
