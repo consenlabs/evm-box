@@ -8,7 +8,7 @@ const get = async (url: string) => {
     method: 'get',
     url: url,
   })
-    .then(res => {
+    .then(res => res.data)
       return res.data
     })
     .catch(error => {
