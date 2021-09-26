@@ -82,6 +82,7 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
       props: {
         chains,
       },
+      revalidate: 100,
     }
   } catch (error) {
     console.error('getStaticProps failed', error)
