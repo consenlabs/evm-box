@@ -1,7 +1,7 @@
+import { GetStaticProps } from 'next'
+import React, { FormEventHandler, useState } from 'react'
 import { Divider, Grid, Page, Input } from '@geist-ui/react'
 import { Search } from '@geist-ui/react-icons'
-import { GetStaticProps } from 'next'
-import { FormEventHandler, useState } from 'react'
 import debounce from 'lodash/debounce'
 import { ChainItem } from '../common/components'
 import { getOriginChains } from '../common/services'
@@ -41,33 +41,31 @@ export const Home: React.FC<HomeProps> = ({ chains }) => {
   }
 
   return (
-    <>
-      <div className="chainlist">
-        <Page>
-          <Page.Header>
-            <h2>EVM Box</h2>
-            <p>EVM Box is a list of EVM networks. Helping users connect to EVM powered networks.</p>
-          </Page.Header>
-          <Input
-            width="100%"
-            placeholder="Search Network by name, symbol or chainId"
-            icon={<Search />}
-            onChange={onSearch}
-            clearable
-            style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
-          />
-          <Divider />
+    <div className="chainlist">
+      <Page>
+        <Page.Header>
+          <h2>EVM Box</h2>
+          <p>EVM Box is a list of EVM networks. Helping users connect to EVM powered networks.</p>
+        </Page.Header>
+        <Input
+          width="100%"
+          placeholder="Search Network by name, symbol or chainId"
+          icon={<Search />}
+          onChange={onSearch}
+          clearable
+          style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
+        />
+        <Divider />
 
-          <Grid.Container gap={2} className="network__container">
-            {filter.map((chain: Chain) => (
-              <Grid sm={12} xs={24} key={chain.chainId}>
-                <ChainItem chain={chain} />
-              </Grid>
-            ))}
-          </Grid.Container>
-        </Page>
-      </div>
-    </>
+        <Grid.Container gap={2} className="network__container">
+          {filter.map((chain: Chain) => (
+            <Grid sm={12} xs={24} key={chain.chainId}>
+              <ChainItem chain={chain} />
+            </Grid>
+          ))}
+        </Grid.Container>
+      </Page>
+    </div>
   )
 }
 
@@ -86,7 +84,8 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
       revalidate: 100,
     }
   } catch (error) {
-    console.error('getStaticProps failed', error)
+    process.exitCode = 1
+    console.log('getOriginChains failed:', error)
     return {
       props: {
         chains: [],
