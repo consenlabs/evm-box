@@ -10,13 +10,15 @@ interface IChainItemProps {
 export const ChainItem: React.FC<IChainItemProps> = ({ chain }) => {
   const enable = useDApp()
   const [currentChainId, addEthChain] = useChain()
+  const networkLabel = chain.faucets && chain.faucets.length ? 'Testnet' : 'Mainnet'
+
   return (
     <>
       <Fieldset className={classnames('chain', { current: currentChainId === chain.chainId })}>
         <Fieldset.Title className="chain-title">
           {chain.name}
           <Tag type="lite" className="chain-tag">
-            {chain.network}
+            {networkLabel}
           </Tag>
         </Fieldset.Title>
         <Fieldset.Subtitle>

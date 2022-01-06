@@ -10,6 +10,9 @@ interface Chain {
   chainId: number
   shortName: string
   chain: string
+  /**
+   * @deprecated check faucets instead
+   */
   network: string
   networkId: number
   nativeCurrency: NativeCurrency
