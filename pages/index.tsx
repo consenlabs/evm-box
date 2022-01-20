@@ -81,7 +81,7 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
       props: {
         chains,
       },
-      revalidate: 100,
+      revalidate: 1 * 60 * 60 * 24,
     }
   } catch (error) {
     process.exitCode = 1
