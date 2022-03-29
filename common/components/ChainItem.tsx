@@ -1,4 +1,4 @@
-import { Fieldset, Tag, Row, Col, Button } from '@geist-ui/react'
+import { Fieldset, Row, Col, Button } from '@geist-ui/react'
 import classnames from 'classnames'
 import { useChain } from '../hooks/useChain'
 import { useDApp } from '../hooks/useDApp'
@@ -10,17 +10,11 @@ interface IChainItemProps {
 export const ChainItem: React.FC<IChainItemProps> = ({ chain }) => {
   const enable = useDApp()
   const [currentChainId, addEthChain] = useChain()
-  const networkLabel = chain.faucets && chain.faucets.length ? 'Testnet' : 'Mainnet'
 
   return (
     <>
       <Fieldset className={classnames('chain', { current: currentChainId === chain.chainId })}>
-        <Fieldset.Title className="chain-title">
-          {chain.name}
-          <Tag type="lite" className="chain-tag">
-            {networkLabel}
-          </Tag>
-        </Fieldset.Title>
+        <Fieldset.Title className="chain-title">{chain.name}</Fieldset.Title>
         <Fieldset.Subtitle>
           <Row>
             <Col>
