@@ -1,18 +1,35 @@
-import React from 'react'
-import Head from 'next/head'
+import { useEffect, useState } from 'react'
+import { CssBaseline, GeistProvider, useTheme } from '@geist-ui/react'
 import { AppProps } from 'next/app'
-import { CssBaseline, GeistProvider } from '@geist-ui/react'
+import Head from 'next/head'
+import { LocaleProvider, useLocale } from '../common/hooks/useLocale'
+import { ThemeProvider } from '../common/hooks/useThemeContext'
+import useThemeDetector from '../common/hooks/useThemeDetector'
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
+  const t = useLocale()
+  const theme = useTheme()
+  const isDarkTheme = useThemeDetector()
+  const [themeType, setThemeType] = useState(isDarkTheme ? 'light' : 'dark')
+  const switchTheme = (type: string) => {
+    setThemeType(type)
+  }
+
+  useEffect(() => {
+    switchTheme(isDarkTheme ? 'dark' : 'light')
+  }, [isDarkTheme])
+
   return (
-    <GeistProvider>
-      <CssBaseline />
-      <Head>
-        <title>EVM Box</title>
+    <LocaleProvider>
+      <ThemeProvider switchTheme={switchTheme} themeType={themeType}>
+        <GeistProvider themeType={themeType} themes={[theme]}>
+          <CssBaseline />
+          <Head>
+            <title>{t('AppName')}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <meta
           name="description"
-          content="EVM Box is a list of EVM networks. Helping users connect to EVM powered networks."
+          content={t('AppDesc')}
         />
         <meta
           name="keywords"
@@ -28,8 +45,10 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
         <link rel="icon" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
       </Head>
-      <Component {...pageProps} />
-    </GeistProvider>
+          <Component {...pageProps} />
+        </GeistProvider>
+      </ThemeProvider>
+    </LocaleProvider>
   )
 }
 
