@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next'
 import React, { FormEventHandler, useEffect, useState } from 'react'
-import { Divider, Grid, Page, Input, useTheme } from '@geist-ui/react'
+import { Divider, Grid, Input, useTheme } from '@geist-ui/react'
 import { Search } from '@geist-ui/react-icons'
 import debounce from 'lodash/debounce'
 import { ChainItem } from '../common/components'
