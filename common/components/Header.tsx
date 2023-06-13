@@ -19,7 +19,7 @@ const Header: React.FC = () => {
           </div>
         </NextLink>
         <nav>
-          <Link
+          {/* <Link
             href="https://faucet.paradigm.xyz/"
             target="_blank"
             rel="noopener noreferrer"
@@ -27,7 +27,7 @@ const Header: React.FC = () => {
             block
           >
             Faucet
-          </Link>
+          </Link> */}
           <Spacer w={2}/>
           <Link block href="#">
             {themeType === 'dark'
