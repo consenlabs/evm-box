@@ -103,12 +103,6 @@ const Header: React.FC = () => {
           font-weight: 500;
           margin-left: 1em;
         }
-
-        @media only screen and (max-width: ${theme.layout.breakpointMobile}) {
-            nav {
-              display: none;
-            }
-          }
       `}</style>
     </header>
   )
