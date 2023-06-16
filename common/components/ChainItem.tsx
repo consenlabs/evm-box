@@ -35,7 +35,7 @@ export const ChainItem: React.FC<IChainItemProps> = ({ chain }) => {
             </Grid>
           </Grid.Container>
         </Fieldset.Subtitle>
-        <Fieldset.Footer>
+        <Fieldset.Footer className="chain-footer">
           <div className="status">
             <Grid.Container gap={2}>
               <Grid>
@@ -69,6 +69,9 @@ export const ChainItem: React.FC<IChainItemProps> = ({ chain }) => {
           :global(.chain) {
             display: block;
             width: 100% !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
           }
 
           :global(.chain:hover) {
@@ -85,6 +88,9 @@ export const ChainItem: React.FC<IChainItemProps> = ({ chain }) => {
           :global(.chain-tag) {
             margin-left: auto;
           }
+          :global(.chain-footer) {
+            height: auto !important;
+          }
           .status {
             font-size: 0.875rem;
             line-height: 1.2;
@@ -98,6 +104,11 @@ export const ChainItem: React.FC<IChainItemProps> = ({ chain }) => {
           .actions {
             display: flex;
             justify-content: flex-end;
+          }
+          @media (max-width: 768px) {
+            .status a {
+              font-size: 0.75rem;
+            }
           }
         `}
       </style>
