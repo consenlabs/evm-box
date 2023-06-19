@@ -14,4 +14,17 @@ export const CUSTOM_NETWORKS: Array<AtLeastOne<Chain, 'chainId' | 'name'>> = [
     name: 'Matic Mainnet',
     rpc: ['https://matic-mainnet.chainstacklabs.com'],
   },
+  {
+    chainId: 5,
+    name: 'Goerli',
+    faucets: ['https://faucetlink.to/goerli']
+  },
+  {
+    name: "Linea Testnet",
+    chainId: 59140,
+    faucets: [
+      "https://faucetlink.to/goerli",
+      "https://faucet.goerli.linea.build/"
+    ]
+  }
 ]
