@@ -44,7 +44,17 @@ export const ChainItem: React.FC<IChainItemProps> = ({ chain }) => {
                 </a>
               </Grid>
               {
-                chain.faucets.slice(0, 2).map((faucet) => <Grid key={faucet}><a href={faucet} target="_blank" rel="noopener noreferrer"> {t('Faucet')} </a></Grid>)
+                chain.faucets.slice(0, 2).map((faucet) => {
+                  try {
+                    const url = new URL(faucet)
+                    if (url.protocol === 'http:' && location.protocol === 'https:') {
+                      url.protocol = 'https:'
+                    }
+                    return <Grid key={faucet}><a href={url.toString()} target="_blank" rel="noopener noreferrer"> {t('Faucet')} </a></Grid>
+                  } catch {
+                    // ignore invalid url
+                  }
+                })
               }
             </Grid.Container>
           </div>
