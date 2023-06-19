@@ -50,7 +50,11 @@ export const ChainItem: React.FC<IChainItemProps> = ({ chain }) => {
                     if (url.protocol === 'http:' && location.protocol === 'https:') {
                       url.protocol = 'https:'
                     }
-                    return <Grid key={faucet}><a href={url.toString()} target="_blank" rel="noopener noreferrer"> {t('Faucet')} </a></Grid>
+                    let href = url.toString()
+                    if (window.imToken) {
+                      href = `imtokenv2://navigate/DappView?url=${encodeURIComponent(url.toString())}`
+                    }
+                    return <Grid key={faucet}><a href={href} target="_blank" rel="noopener noreferrer"> {t('Faucet')} </a></Grid>
                   } catch {
                     // ignore invalid url
                   }

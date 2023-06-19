@@ -1,5 +1,6 @@
 interface Window {
   ethereum: ExternalProvides
+  imToken?: any
 }
 declare namespace NodeJS {
   interface ProcessEnv {
