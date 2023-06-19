@@ -39,7 +39,7 @@ export const ChainItem: React.FC<IChainItemProps> = ({ chain }) => {
           <div className="status">
             <Grid.Container gap={2}>
               <Grid>
-                <a href={chain.infoURL} target="_blank" rel="noopener noreferrer">
+                <a href={chain.infoURL} rel="noopener noreferrer">
                   {t('OfficialSite')}
                 </a>
               </Grid>
