@@ -35,7 +35,7 @@ export const LocaleProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   })
   const { query } = useRouter()
   useEffect(() => {
-    const locale = navigator.language.split('-')[0]
+    const locale = navigator.language
 
     setState({ ...state, locale: locale === 'zh-CN' ? Locale.Zh : Locale.En })
   }, [])
