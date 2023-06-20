@@ -1,18 +1,24 @@
 import { GetStaticProps } from 'next'
-import React, { FormEventHandler, useState } from 'react'
-import { Divider, Grid, Page, Input } from '@geist-ui/react'
+import React, { FormEventHandler, useEffect, useState } from 'react'
+import { Divider, Grid, Input, useTheme } from '@geist-ui/react'
 import { Search } from '@geist-ui/react-icons'
 import debounce from 'lodash/debounce'
 import { ChainItem } from '../common/components'
 import { getOriginChains } from '../common/services'
 import { CUSTOM_NETWORKS } from '../common/custom-networks'
 import { mergeNetworkConfig } from '../common/utils'
+import { useLocale } from '../common/hooks/useLocale'
+import BackToTop from '../common/components/BackToTop'
+import Header from '../common/components/Header'
 interface HomeProps {
   chains: Chain[]
 }
 
 export const Home: React.FC<HomeProps> = ({ chains }) => {
+  const theme = useTheme()
   const [filter, setFilter] = useState<Chain[]>(chains)
+  const [mounted, setMounted] = useState(false)
+  const t = useLocale()
 
   const searchNetwork: FormEventHandler<HTMLInputElement> = e => {
     const searchContent = (e.target as HTMLInputElement).value.trim()
@@ -40,32 +46,62 @@ export const Home: React.FC<HomeProps> = ({ chains }) => {
     }
   }
 
-  return (
-    <div className="chainlist">
-      <Page>
-        <Page.Header>
-          <h2>EVM Box</h2>
-          <p>EVM Box is a list of EVM networks. Helping users connect to EVM powered networks.</p>
-        </Page.Header>
-        <Input
-          width="100%"
-          placeholder="Search Network by name, symbol or chainId"
-          icon={<Search />}
-          onChange={onSearch}
-          clearable
-          style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
-        />
-        <Divider />
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
-        <Grid.Container gap={2} className="network__container">
-          {filter.map((chain: Chain) => (
-            <Grid sm={12} xs={24} key={chain.chainId}>
-              <ChainItem chain={chain} />
-            </Grid>
-          ))}
-        </Grid.Container>
-      </Page>
-    </div>
+  if (!mounted) return null
+
+  return (
+    <>
+      <Header />
+      <div className="layout">
+        <main>
+          <p className="desc">{t('AppDesc')}</p>
+          <Input
+            width="100%"
+            placeholder="Search Network by name, symbol or chainId"
+            icon={<Search />}
+            onChange={onSearch}
+            clearable
+            style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
+            enterKeyHint='search'
+          />
+          <Divider />
+
+          <Grid.Container gap={2} className="network__container">
+            {filter.map((chain: Chain) => (
+              <Grid sm={12} xs={24} key={`${chain.name}:${chain.chainId}`}>
+                <ChainItem chain={chain} />
+              </Grid>
+            ))}
+          </Grid.Container>
+        </main>
+      </div>
+      <BackToTop />
+      <style jsx>{`
+        .desc {
+          margin-top: 100px;
+        }
+
+        .layout {
+          max-width: ${theme.layout.pageWidthWithMargin};
+          margin: 0 auto;
+          padding: 0 ${theme.layout.gap} calc(${theme.layout.gap} * 2);
+          box-sizing: border-box;
+        }
+        @media only screen and (max-width: ${theme.layout.breakpointMobile}) {
+          .layout {
+            width: 90vw;
+            max-width: 90vw;
+            padding: 20px 0;
+          }
+          .desc {
+            margin-top: 70px;
+          }
+        }
+      `}</style>
+    </>
   )
 }
 
