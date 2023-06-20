@@ -107,6 +107,8 @@ export const ChainItem: React.FC<IChainItemProps> = ({ chain }) => {
             margin: 0;
             display: inline-flex;
             word-break: break-word;
+            max-width: 62%;
+            flex-wrap: wrap;
           }
           .status > :global(p) {
             margin: 0;
