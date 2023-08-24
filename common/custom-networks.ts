@@ -50,7 +50,7 @@ export const CUSTOM_NETWORKS: Array<AtLeastOne<Chain, 'chainId' | 'name'>> = [
       symbol: "tBNB",
       decimals: 18,
     },
-    rpc: "https://opbnb-testnet-rpc.bnbchain.org",
+    rpc: ["https://opbnb-testnet-rpc.bnbchain.org"],
     chainId: 5611,
     faucets: [
       "https://faucetlink.to/goerli",
