@@ -5,6 +5,13 @@ interface NativeCurrency {
   decimals: number
 }
 
+interface Explorer {
+  name: string
+  url: string
+  icon: string
+  standard: string
+}
+
 interface Chain {
   name: string
   chainId: number
@@ -19,6 +26,7 @@ interface Chain {
   rpc: string[]
   faucets: string[]
   infoURL: string
+  explorers?: Explorer[]
   selectCounts?: number
 }
 
