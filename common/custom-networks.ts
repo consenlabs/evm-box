@@ -26,5 +26,33 @@ export const CUSTOM_NETWORKS: Array<AtLeastOne<Chain, 'chainId' | 'name'>> = [
       "https://faucetlink.to/goerli",
       "https://faucet.goerli.linea.build/"
     ]
+  },
+  {
+    nativeCurrency: "BNB",
+    rpc: "https://opbnb-mainnet-rpc.bnbchain.org",
+    name: "opBNB Mainnet",
+    chainId: 204,
+    explorers:[
+      {
+        "name":"opBNBScan",
+        "url":"http://mainnet.opbnbscan.com/",
+        "standard":"EIP3091"
+      }]
+  },
+  {
+    name: "opBNB Testnet",
+    nativeCurrency: "tBNB",
+    rpc: "https://opbnb-testnet-rpc.bnbchain.org",
+    chainId: 5611,
+    faucets: [
+      "https://faucetlink.to/goerli",
+      "https://faucet.goerli.linea.build/"
+    ],
+    explorers:[
+      {
+        "name":"opBNBScan",
+        "url":"http://mainnet.opbnbscan.com/",
+        "standard":"EIP3091"
+      }]
   }
 ]
