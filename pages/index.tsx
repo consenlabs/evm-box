@@ -5,7 +5,7 @@ import { Search } from '@geist-ui/react-icons'
 import debounce from 'lodash/debounce'
 import { ChainItem } from '../common/components'
 import { getOriginChains } from '../common/services'
-import { CUSTOM_NETWORKS } from '../common/custom-networks'
+import { ADDITIONAL_NETWORKS, CUSTOM_NETWORKS } from '../common/custom-networks'
 import { mergeNetworkConfig } from '../common/utils'
 import { useLocale } from '../common/hooks/useLocale'
 import BackToTop from '../common/components/BackToTop'
@@ -65,7 +65,7 @@ export const Home: React.FC<HomeProps> = ({ chains }) => {
             onChange={onSearch}
             clearable
             style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
-            enterKeyHint='search'
+            enterKeyHint="search"
           />
           <Divider />
 
@@ -111,7 +111,7 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   try {
     const originChains = await getOriginChains()
 
-    const chains = mergeNetworkConfig(originChains, CUSTOM_NETWORKS)
+    const chains = mergeNetworkConfig(originChains, CUSTOM_NETWORKS, ADDITIONAL_NETWORKS)
 
     return {
       props: {
