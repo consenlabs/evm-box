@@ -33,7 +33,7 @@ export const CUSTOM_NETWORKS: Array<AtLeastOne<Chain, 'chainId' | 'name'>> = [
       symbol: "BNB",
       decimals: 18,
     },
-    rpc: "https://opbnb-mainnet-rpc.bnbchain.org",
+    rpc: ["https://opbnb-mainnet-rpc.bnbchain.org"],
     name: "opBNB Mainnet",
     chainId: 204,
     explorers:[
