@@ -45,7 +45,11 @@ export const CUSTOM_NETWORKS: Array<AtLeastOne<Chain, 'chainId' | 'name'>> = [
   },
   {
     name: "opBNB Testnet",
-    nativeCurrency: "tBNB",
+    nativeCurrency:  {
+      name: "tBNB",
+      symbol: "tBNB",
+      decimals: 18,
+    },
     rpc: "https://opbnb-testnet-rpc.bnbchain.org",
     chainId: 5611,
     faucets: [
