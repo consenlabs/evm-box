@@ -19,7 +19,7 @@ export const useChain = (): [number | undefined, (chain: Chain) => void] => {
     if (!enable) return
     const params: AddEthereumChainParameter = {
       chainId: hexValue(chain.chainId),
-      blockExplorerUrls: [chain.infoURL],
+      blockExplorerUrls: chain.explorers?.length ? [chain.explorers[0].url] : [chain.infoURL],
       chainName: chain.name,
       nativeCurrency: {
         name: chain.nativeCurrency.name,

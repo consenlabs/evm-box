@@ -6,10 +6,10 @@ interface NativeCurrency {
 }
 
 interface Explorer {
-  name: string
+  name?: string
   url: string
-  icon: string
-  standard: string
+  icon?: string
+  standard?: string
 }
 
 interface Chain {
