@@ -6,10 +6,10 @@ interface NativeCurrency {
 }
 
 interface Explorer {
-  name: string
+  name?: string
   url: string
-  icon: string
-  standard: string
+  icon?: string
+  standard?: string
 }
 
 interface Chain {
@@ -20,7 +20,7 @@ interface Chain {
   /**
    * @deprecated check faucets instead
    */
-  network: string
+  network?: string
   networkId: number
   nativeCurrency: NativeCurrency
   rpc: string[]
