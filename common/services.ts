@@ -9,4 +9,4 @@ const get = async (url: string) =>
     url: url,
   }).then(res => res.data)
 
-export const getOriginChains = async () => await get('https://chainid.network/chains.json')
+export const getOriginChains = async () => await get('https://chainlist.org/rpcs.json')
