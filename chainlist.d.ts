@@ -23,7 +23,7 @@ interface Chain {
   network?: string
   networkId: number
   nativeCurrency: NativeCurrency
-  rpc: string[]
+  rpc: ({ url: string } | string)[]
   faucets: string[]
   infoURL: string
   explorers?: Explorer[]
