@@ -26,7 +26,7 @@ export const useChain = (): [number | undefined, (chain: Chain) => void] => {
         symbol: chain.nativeCurrency.symbol,
         decimals: chain.nativeCurrency.decimals,
       },
-      rpcUrls: chain.rpc,
+      rpcUrls: chain.rpc.map((r) => (typeof r === 'string' ? r : r.url)),
     }
     window.ethereum
       .request({
