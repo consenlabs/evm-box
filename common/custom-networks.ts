@@ -24,6 +24,11 @@ export const CUSTOM_NETWORKS: Array<AtLeastOne<Chain, 'chainId' | 'name'>> = [
     chainId: 59140,
     faucets: ['https://faucetlink.to/goerli', 'https://faucet.goerli.linea.build/'],
   },
+  {
+    name: "IBVM Mainnet",
+    chainId: 2105,
+    faucets: ['https://faucet.ibvm.io']
+  },
 ]
 
 export const ADDITIONAL_NETWORKS: Array<Chain> = [
