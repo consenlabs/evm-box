@@ -25,6 +25,11 @@ export const CUSTOM_NETWORKS: Array<AtLeastOne<Chain, 'chainId' | 'name'>> = [
     faucets: ['https://faucetlink.to/goerli', 'https://faucet.goerli.linea.build/'],
   },
   {
+    name: "JuChain Mainnet",
+    chainId: 210000,
+    networkId: 210000,
+  },
+  {
     name: "IBVM Mainnet",
     chainId: 2105,
     faucets: ['https://faucet.ibvm.io']
