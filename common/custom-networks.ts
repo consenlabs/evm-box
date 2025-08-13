@@ -30,6 +30,11 @@ export const CUSTOM_NETWORKS: Array<AtLeastOne<Chain, 'chainId' | 'name'>> = [
     networkId: 210000,
   },
   {
+    name: "JuChain Testnet",
+    chainId: 202599,
+    networkId: 202599,
+  },
+  {
     name: "IBVM Mainnet",
     chainId: 2105,
     faucets: ['https://faucet.ibvm.io']
