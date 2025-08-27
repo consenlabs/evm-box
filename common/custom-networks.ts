@@ -39,8 +39,13 @@ export const CUSTOM_NETWORKS: Array<AtLeastOne<Chain, 'chainId' | 'name'>> = [
     chainId: 2105,
     faucets: ['https://faucet.ibvm.io']
   },
+  {
+    name: "BESC HYPERCHAIN",
+    chainId: 2372,
+    faucets: ["https://faucet.beschyperchain.com"],
+  }
 ]
 
 export const ADDITIONAL_NETWORKS: Array<Chain> = [
-  
+
 ]
