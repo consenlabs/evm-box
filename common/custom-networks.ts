@@ -43,6 +43,16 @@ export const CUSTOM_NETWORKS: Array<AtLeastOne<Chain, 'chainId' | 'name'>> = [
     name: "BESC HYPERCHAIN",
     chainId: 2372,
     faucets: ["https://faucet.beschyperchain.com"],
+  },
+  {
+    name: "Gate Layer",
+    chainId: 10088,
+    faucets: ["https://gatelayer-mainnet.gatenode.cc"],
+  },
+  {
+    name: "Galactica Mainnet",
+    chainId: 613419,
+    faucets: ["https://galactica-mainnet.g.alchemy.com/public"],
   }
 ]
 

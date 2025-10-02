@@ -13,6 +13,8 @@ export const ChainItem: React.FC<IChainItemProps> = ({ chain }) => {
   const [currentChainId, switchEthChain] = useChain()
   const t = useLocale()
 
+  const faucets = chain.faucets ? chain.faucets.slice(0, 2) : []
+
   return (
     <>
       <Fieldset
@@ -44,7 +46,7 @@ export const ChainItem: React.FC<IChainItemProps> = ({ chain }) => {
                 </a>
               </Grid>
               {
-                chain.faucets.slice(0, 2).map((faucet) => {
+                faucets.map((faucet) => {
                   try {
                     const url = new URL(faucet)
                     if (url.protocol === 'http:' && location.protocol === 'https:') {
