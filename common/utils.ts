@@ -13,6 +13,17 @@ export const mergeNetworkConfig = (
   return merged.concat(additional)
 }
 
+/**
+ * EVM Box adds networks through imToken's wallet_addEthereumChain flow.
+ * Keep this list aligned with the native currency constraint enforced by the
+ * app so users are not offered networks that imToken will always reject.
+ */
+export const isSupportedByImToken = (chain: Chain): boolean =>
+  chain.nativeCurrency?.decimals === 18
+
+export const filterSupportedNetworks = (chains: Chain[]): Chain[] =>
+  chains.filter(isSupportedByImToken)
+
 const hexToRgb = (color: string): [number, number, number] => {
   const fullReg = /^#?([a-f\d])([a-f\d])([a-f\d])$/i
   const full = color.replace(fullReg, (_, r, g, b) => `${r}${r}${g}${g}${b}${b}`)
