@@ -14,7 +14,9 @@
     "build": "next build",
     "build:analyze": "ANALYZE=true next build",
     "prepare": "husky install",
-    "test": "tsc -p tsconfig.test.json"
+    "test": "yarn test:types && yarn test:unit",
+    "test:types": "tsc -p tsconfig.test.json",
+    "test:unit": "ts-node --files --project tsconfig.unit.json common/utils.spec.ts"
   },
   "dependencies": {
     "@consenlabs-fe/gateway": "^0.2.0",
@@ -46,6 +48,7 @@
     "lint-staged": ">=10",
     "next-compose-plugins": "^2.2.1",
     "standard-version": "^9.3.0",
+    "ts-node": "10.9.2",
     "typescript": "^5.1.3"
   },
   "publishConfig": {

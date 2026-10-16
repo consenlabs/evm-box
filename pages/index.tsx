@@ -6,7 +6,7 @@ import debounce from 'lodash/debounce'
 import { ChainItem } from '../common/components'
 import { getOriginChains } from '../common/services'
 import { ADDITIONAL_NETWORKS, CUSTOM_NETWORKS } from '../common/custom-networks'
-import { mergeNetworkConfig } from '../common/utils'
+import { filterNetworksByNativeCurrency, mergeNetworkConfig } from '../common/utils'
 import { useLocale } from '../common/hooks/useLocale'
 import BackToTop from '../common/components/BackToTop'
 import Header from '../common/components/Header'
@@ -111,7 +111,9 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   try {
     const originChains = await getOriginChains()
 
-    const chains = mergeNetworkConfig(originChains, CUSTOM_NETWORKS, ADDITIONAL_NETWORKS)
+    const chains = filterNetworksByNativeCurrency(
+      mergeNetworkConfig(originChains, CUSTOM_NETWORKS, ADDITIONAL_NETWORKS),
+    )
 
     return {
       props: {
